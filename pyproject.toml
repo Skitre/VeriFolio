@@ -1,7 +1,7 @@
 [project]
 name = "zhengyan"
 version = "0.1.0"
-description = "证研：基于 Harness Engineering 的可信投研多 Agent 系统（分阶段还原学习版）"
+description = "VeriFolio（溯研）：基于 Harness Engineering 的可信投研多 Agent 系统"
 requires-python = ">=3.11"
 dependencies = [
     "pydantic>=2.9,<3.0",
