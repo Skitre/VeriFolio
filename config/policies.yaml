@@ -1,0 +1,74 @@
+# Harness 安全治理与流程策略配置（对应文档第 3、11、11.1、11.2、28 题）
+
+approval:
+  ticket_ttl_seconds: 600
+  forbidden_prefixes:
+    - "action."
+
+# 跨任务数据缓存 TTL（与同任务内幂等明确区分）
+cross_task_cache_ttl_seconds:
+  market_and_financials: 43200  # 12 小时
+  web_search: 86400             # 24 小时
+
+retry:
+  max_retries: 2
+  backoff_base_seconds: 1.0     # 指数退避：1s, 2s
+
+# 三档流程权限白名单与预算上限（超限只降研究深度，绝不跳过核验）
+tiers:
+  quick:
+    max_tokens: 80000
+    max_searches: 3
+    max_fetches: 2
+    max_duration_seconds: 180
+    max_supplement_rounds: 0
+    allowed_skills:
+      - "data.get_financials"
+      - "data.get_quote"
+      - "compute.yoy_growth"
+      - "compute.ratio"
+      - "compute.pe_ttm_pit"
+      - "search.web"
+
+  standard:
+    max_tokens: 300000
+    max_searches: 15
+    max_fetches: 8
+    max_duration_seconds: 900
+    max_supplement_rounds: 1
+    allowed_skills:
+      - "data.get_financials"
+      - "data.get_quote"
+      - "data.get_announcements"
+      - "compute.yoy_growth"
+      - "compute.single_quarter"
+      - "compute.ratio"
+      - "compute.pe_ttm_pit"
+      - "search.web"
+      - "search.fetch"
+
+  deep:
+    max_tokens: 1200000
+    max_searches: 40
+    max_fetches: 20
+    max_duration_seconds: 1800
+    max_supplement_rounds: 1
+    allowed_skills:
+      - "data.get_financials"
+      - "data.get_quote"
+      - "data.get_announcements"
+      - "compute.yoy_growth"
+      - "compute.single_quarter"
+      - "compute.ratio"
+      - "compute.pe_ttm_pit"
+      - "search.web"
+      - "search.fetch"
+
+# Stage 3/7 路由与分类器默认开关预留
+routing:
+  classifier: "llm"
+  temperature: 0.75
+  abstain_threshold: 0.55
+
+intake:
+  classifier: "llm"

@@ -1,0 +1,209 @@
+[
+  {
+    "case_id": "CMP-01",
+    "category": "yoy_growth",
+    "description": "贵州茅台 2025H1 营业收入同比增速",
+    "params": {
+      "symbol": "600519",
+      "as_of": "2025-08-20",
+      "current_period": "2025H1",
+      "prior_period": "2024H1",
+      "metric": "revenue"
+    },
+    "expected_value": "9.10",
+    "expected_unit": "%"
+  },
+  {
+    "case_id": "CMP-02",
+    "category": "yoy_growth",
+    "description": "贵州茅台 2025H1 归母净利润同比增速",
+    "params": {
+      "symbol": "600519",
+      "as_of": "2025-08-20",
+      "current_period": "2025H1",
+      "prior_period": "2024H1",
+      "metric": "net_profit"
+    },
+    "expected_value": "8.89",
+    "expected_unit": "%"
+  },
+  {
+    "case_id": "CMP-03",
+    "category": "yoy_growth",
+    "description": "贵州茅台 2025H1 合同负债同比变动（对应深研与经验卡 L-007 案例）",
+    "params": {
+      "symbol": "600519",
+      "as_of": "2025-08-20",
+      "current_period": "2025H1",
+      "prior_period": "2024H1",
+      "metric": "contract_liabilities"
+    },
+    "expected_value": "-42.00",
+    "expected_unit": "%"
+  },
+  {
+    "case_id": "CMP-04",
+    "category": "yoy_growth",
+    "description": "宁德时代 2025H1 营业收入同比增速",
+    "params": {
+      "symbol": "300750",
+      "as_of": "2025-08-20",
+      "current_period": "2025H1",
+      "prior_period": "2024H1",
+      "metric": "revenue"
+    },
+    "expected_value": "7.27",
+    "expected_unit": "%"
+  },
+  {
+    "case_id": "CMP-05",
+    "category": "yoy_growth",
+    "description": "宁德时代 2025H1 归母净利润同比增速",
+    "params": {
+      "symbol": "300750",
+      "as_of": "2025-08-20",
+      "current_period": "2025H1",
+      "prior_period": "2024H1",
+      "metric": "net_profit"
+    },
+    "expected_value": "33.33",
+    "expected_unit": "%"
+  },
+  {
+    "case_id": "CMP-06",
+    "category": "single_quarter",
+    "description": "贵州茅台 2024Q3 单季营业收入（2024Q3累计 - 2024H1累计）",
+    "params": {
+      "symbol": "600519",
+      "as_of": "2025-08-20",
+      "cumulative_period": "2024Q3",
+      "previous_cumulative_period": "2024H1",
+      "metric": "revenue",
+      "quarter_label": "2024Q3_SQ"
+    },
+    "expected_value": "388.45",
+    "expected_unit": "亿元"
+  },
+  {
+    "case_id": "CMP-07",
+    "category": "single_quarter",
+    "description": "贵州茅台 2024Q4 单季归母净利润（2024FY - 2024Q3累计）",
+    "params": {
+      "symbol": "600519",
+      "as_of": "2025-08-20",
+      "cumulative_period": "2024FY",
+      "previous_cumulative_period": "2024Q3",
+      "metric": "net_profit",
+      "quarter_label": "2024Q4_SQ"
+    },
+    "expected_value": "254.00",
+    "expected_unit": "亿元"
+  },
+  {
+    "case_id": "CMP-08",
+    "category": "single_quarter",
+    "description": "贵州茅台 2025Q3 单季营业收入（2025Q3累计 - 2025H1累计）",
+    "params": {
+      "symbol": "600519",
+      "as_of": "2025-11-05",
+      "cumulative_period": "2025Q3",
+      "previous_cumulative_period": "2025H1",
+      "metric": "revenue",
+      "quarter_label": "2025Q3_SQ"
+    },
+    "expected_value": "390.65",
+    "expected_unit": "亿元"
+  },
+  {
+    "case_id": "CMP-09",
+    "category": "single_quarter",
+    "description": "贵州茅台 2025Q3 单季归母净利润（2025Q3累计 - 2025H1累计）",
+    "params": {
+      "symbol": "600519",
+      "as_of": "2025-11-05",
+      "cumulative_period": "2025Q3",
+      "previous_cumulative_period": "2025H1",
+      "metric": "net_profit",
+      "quarter_label": "2025Q3_SQ"
+    },
+    "expected_value": "192.24",
+    "expected_unit": "亿元"
+  },
+  {
+    "case_id": "CMP-10",
+    "category": "ratio",
+    "description": "贵州茅台 2025H1 毛利率（毛利 / 营收）",
+    "params": {
+      "symbol": "600519",
+      "as_of": "2025-08-20",
+      "period": "2025H1",
+      "numerator": "gross_profit",
+      "denominator": "revenue",
+      "output_name": "gross_margin_calc",
+      "output_display_name": "毛利率",
+      "output_unit": "%"
+    },
+    "expected_value": "91.30",
+    "expected_unit": "%"
+  },
+  {
+    "case_id": "CMP-11",
+    "category": "ratio",
+    "description": "贵州茅台 2025H1 净现比（经营现金流 / 归母净利润）",
+    "params": {
+      "symbol": "600519",
+      "as_of": "2025-08-20",
+      "period": "2025H1",
+      "numerator": "ocf",
+      "denominator": "net_profit",
+      "output_name": "ocf_to_np",
+      "output_display_name": "净现比",
+      "output_unit": "倍"
+    },
+    "expected_value": "0.88",
+    "expected_unit": "倍"
+  },
+  {
+    "case_id": "CMP-12",
+    "category": "ratio",
+    "description": "宁德时代 2025H1 净利率（归母净利润 / 营收）",
+    "params": {
+      "symbol": "300750",
+      "as_of": "2025-08-20",
+      "period": "2025H1",
+      "numerator": "net_profit",
+      "denominator": "revenue",
+      "output_name": "net_margin",
+      "output_display_name": "净利率",
+      "output_unit": "%"
+    },
+    "expected_value": "17.04",
+    "expected_unit": "%"
+  },
+  {
+    "case_id": "CMP-13",
+    "category": "pe_ttm",
+    "description": "贵州茅台 2025-08-20 按披露日对齐 PE(TTM)（用 2024FY + 2025H1 - 2024H1）",
+    "params": {
+      "symbol": "600519",
+      "as_of": "2025-08-20"
+    },
+    "expected_value": "20.39",
+    "expected_unit": "倍"
+  },
+  {
+    "case_id": "CMP-14",
+    "category": "basis_mismatch",
+    "description": "口径拦截：禁止拿 2025H1 扣非净利润（NON_GAAP）与 2024H1 合并净利润（CUMULATIVE）直接算同比",
+    "params": {
+      "symbol": "600519",
+      "as_of": "2025-08-20",
+      "current_period": "2025H1_NON_GAAP",
+      "prior_period": "2024H1",
+      "metric": "net_profit"
+    },
+    "expected_value": null,
+    "expected_unit": null,
+    "expect_error": true
+  }
+]

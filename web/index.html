@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>证研（ZhengYan）可信投研多 Agent 控制台</title>
+  <style>
+    :root { --bg:#0f172a; --card:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --accent:#38bdf8; --ok:#22c55e; --warn:#f59e0b; }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; background:var(--bg); color:var(--text); }
+    header { padding:18px 28px; border-bottom:1px solid #334155; display:flex; justify-content:space-between; align-items:center; }
+    header h1 { margin:0; font-size:18px; }
+    nav { display:flex; gap:10px; padding:12px 28px; background:#0b1220; border-bottom:1px solid #1e293b; }
+    nav button { background:transparent; color:var(--muted); border:1px solid #334155; padding:8px 14px; border-radius:8px; cursor:pointer; }
+    nav button.active { background:var(--accent); color:#0f172a; border-color:var(--accent); font-weight:600; }
+    main { max-width:980px; margin:24px auto; padding:0 20px; }
+    .panel { display:none; background:var(--card); border:1px solid #334155; border-radius:12px; padding:20px; }
+    .panel.active { display:block; }
+    input, select, textarea { width:100%; box-sizing:border-box; padding:10px; border-radius:8px; border:1px solid #475569; background:#0f172a; color:var(--text); margin:8px 0 12px; }
+    .btn { background:var(--accent); color:#0f172a; border:none; padding:10px 18px; border-radius:8px; font-weight:600; cursor:pointer; }
+    pre { background:#020617; padding:14px; border-radius:8px; overflow:auto; font-size:13px; line-height:1.5; color:#cbd5e1; }
+    .row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>证研 · 基于 Harness Engineering 的可信投研多 Agent 系统</h1>
+    <span style="color:var(--muted);font-size:13px">不预测涨跌 · 不给买卖指令 · 结论查得到出处</span>
+  </header>
+  <nav>
+    <button class="active" onclick="showTab('research', this)">研究台</button>
+    <button onclick="showTab('dossiers', this); loadDossiers()">决策档案</button>
+    <button onclick="showTab('evals', this); loadKevEval()">评测看板 (Kev)</button>
+    <button onclick="showTab('rsi', this); loadLedger()">RSI 自进化账本</button>
+    <button onclick="showTab('subs', this)">订阅增量复核</button>
+  </nav>
+  <main>
+    <section id="research" class="panel active">
+      <h3>发起投研任务</h3>
+      <textarea id="question" rows="2">复核贵州茅台 600519 半年报合同负债变动与利润质量</textarea>
+      <div class="row">
+        <div><label>研究时点 as_of</label><input id="as_of" value="2025-08-20" /></div>
+        <div><label>判别模式</label>
+          <select id="clf_mode"><option value="small">small (Kev-0.8B 本地)</option><option value="shadow">shadow (影子对比)</option><option value="llm">llm (大模型)</option></select>
+        </div>
+        <div><label>手动档位（可选）</label>
+          <select id="tier"><option value="">自动路由</option><option value="quick">快查</option><option value="standard">标准研究</option><option value="deep">争议深研</option></select>
+        </div>
+      </div>
+      <button class="btn" onclick="runResearch()">开始研究</button>
+      <pre id="research_out">点击“开始研究”查看完整状态图轨迹与核验结果...</pre>
+    </section>
+
+    <section id="dossiers" class="panel">
+      <h3>只追加版本化决策档案</h3>
+      <pre id="dossiers_out">加载中...</pre>
+    </section>
+
+    <section id="evals" class="panel">
+      <h3>DeepSeek vs Kev-0.8B 混合判别评测（24 题路由 + 64 题意图 + 22 条真实回放）</h3>
+      <pre id="evals_out">加载中...</pre>
+    </section>
+
+    <section id="rsi" class="panel">
+      <h3>RSI 只追加三表账本（事件溯源）</h3>
+      <pre id="rsi_out">加载中...</pre>
+    </section>
+
+    <section id="subs" class="panel">
+      <h3>四类变更订阅扫描</h3>
+      <input id="scan_symbol" value="600519" placeholder="股票代码" />
+      <input id="scan_date" value="2025-11-05" placeholder="扫描时点 YYYY-MM-DD" />
+      <button class="btn" onclick="runScan()">执行扫描</button>
+      <pre id="subs_out">先在研究台生成档案，再在此触发跨期变更扫描。</pre>
+    </section>
+  </main>
+  <script>
+    function showTab(id, btn) {
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+    }
+    async function runResearch() {
+      const tier = document.getElementById('tier').value || null;
+      const res = await fetch('/api/research', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          question: document.getElementById('question').value,
+          as_of: document.getElementById('as_of').value,
+          classifier_mode: document.getElementById('clf_mode').value,
+          user_selected_tier: tier,
+        }),
+      });
+      document.getElementById('research_out').textContent = JSON.stringify(await res.json(), null, 2);
+    }
+    async function loadDossiers() {
+      const res = await fetch('/api/dossiers');
+      document.getElementById('dossiers_out').textContent = JSON.stringify(await res.json(), null, 2);
+    }
+    async function loadKevEval() {
+      const res = await fetch('/api/evals/kev-comparison');
+      document.getElementById('evals_out').textContent = JSON.stringify(await res.json(), null, 2);
+    }
+    async function loadLedger() {
+      const res = await fetch('/api/rsi/ledger');
+      document.getElementById('rsi_out').textContent = JSON.stringify(await res.json(), null, 2);
+    }
+    async function runScan() {
+      const sym = document.getElementById('scan_symbol').value;
+      const res = await fetch(`/api/subscriptions/${sym}/scan`, {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ scan_as_of: document.getElementById('scan_date').value }),
+      });
+      document.getElementById('subs_out').textContent = JSON.stringify(await res.json(), null, 2);
+    }
+  </script>
+</body>
+</html>

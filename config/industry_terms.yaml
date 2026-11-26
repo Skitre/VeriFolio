@@ -1,0 +1,77 @@
+# 行业专用词表（对应文档第 21 题 & 第 27 题：config/industry_terms.yaml）
+# 当 S1 经验卡正文出现下列行业专用词时，防过拟合门控强制要求 applicable_scope 明确标注对应行业，
+# 防止把单一行业的特殊规律伪装成全市场通用规则。
+
+industries:
+  白酒/消费品:
+    scope_aliases: ["白酒", "消费品", "食品饮料", "酒企"]
+    terms:
+      - "基酒"
+      - "批价"
+      - "飞天"
+      - "经销商打款"
+      - "渠道压货"
+      - "散瓶"
+      - "开瓶率"
+
+  新能源/动力电池:
+    scope_aliases: ["新能源", "动力电池", "锂电", "电池", "储能"]
+    terms:
+      - "碳酸锂"
+      - "装车量"
+      - "磷酸铁锂"
+      - "三元电池"
+      - "宁王"
+      - "单Wh盈利"
+      - "正极材料"
+
+  医药生物:
+    scope_aliases: ["医药", "创新药", "医疗", "生物医药"]
+    terms:
+      - "集采"
+      - "临床三期"
+      - "管线"
+      - "医保谈判"
+      - "仿制药"
+
+  银行金融:
+    scope_aliases: ["银行", "金融", "保险"]
+    terms:
+      - "净息差"
+      - "不良贷款率"
+      - "拨备覆盖率"
+      - "核心一级资本充足率"
+
+# 防过拟合门控额外禁止的具体公司名与投资买卖建议词
+forbidden_company_names:
+  - "贵州茅台"
+  - "茅台"
+  - "宁德时代"
+  - "五粮液"
+  - "比亚迪"
+  - "中国平安"
+
+forbidden_investment_advice_terms:
+  - "建议买入"
+  - "建议卖出"
+  - "立刻买入"
+  - "满仓"
+  - "抄底"
+  - "目标价"
+  - "强烈推荐"
+  - "清仓"
+  - "必然上涨"
+  - "必然下跌"
+
+# S3 站点名单门控禁止加入的黑名单与自媒体平台
+forbidden_self_media_domains:
+  - "guba.eastmoney.com"
+  - "xueqiu.com"
+  - "tieba.baidu.com"
+  - "baijiahao.baidu.com"
+  - "zhihu.com"
+  - "weibo.com"
+  - "mp.weixin.qq.com"
+  - "toutiao.com"
+  - "xiaohongshu.com"
+  - "douyin.com"

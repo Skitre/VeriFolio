@@ -1,0 +1,58 @@
+# 网页搜索站点权威度白名单与黑名单配置
+# 对应文档第 6 题（B 级要求站点权威度 >= 3）与第 9 题（只抓白名单，搜索排除低质社区站点）
+
+min_b_grade_authority: 3
+default_search_lookback_days: 120
+
+whitelist:
+  sse.com.cn:
+    name: 上海证券交易所
+    authority: 5
+  szse.cn:
+    name: 深圳证券交易所
+    authority: 5
+  csrc.gov.cn:
+    name: 中国证监会
+    authority: 5
+  cninfo.com.cn:
+    name: 巨潮资讯网
+    authority: 5
+  caixin.com:
+    name: 财新网
+    authority: 4
+  stcn.com:
+    name: 证券时报网
+    authority: 4
+  cnstock.com:
+    name: 上海证券报中国证券网
+    authority: 4
+  cs.com.cn:
+    name: 中国证券报中证网
+    authority: 4
+  yicai.com:
+    name: 第一财经
+    authority: 4
+  cls.cn:
+    name: 财联社
+    authority: 3
+  finance.sina.com.cn:
+    name: 新浪财经
+    authority: 3
+  finance.eastmoney.com:
+    name: 东方财富财经
+    authority: 3
+  news.10jqka.com.cn:
+    name: 同花顺财经
+    authority: 3
+  jrj.com.cn:
+    name: 金融界
+    authority: 2
+
+# 搜索时自动拼入 `-site:` 排除，抓取阶段同样直接拒绝
+blacklist:
+  - guba.eastmoney.com
+  - xueqiu.com
+  - tieba.baidu.com
+  - baijiahao.baidu.com
+  - zhihu.com
+  - weibo.com

@@ -1,0 +1,28 @@
+[
+  {"case_id": "RT-01", "question": "什么是市盈率", "expected_tier": "quick", "category": "concept"},
+  {"case_id": "RT-02", "question": "什么叫净现比，怎么算", "expected_tier": "quick", "category": "concept"},
+  {"case_id": "RT-03", "question": "解释一下合同负债在白酒财报里的含义", "expected_tier": "quick", "category": "concept"},
+  {"case_id": "RT-04", "question": "ROE 和 ROIC 有什么区别，名词解释", "expected_tier": "quick", "category": "concept"},
+  {"case_id": "RT-05", "question": "查一下贵州茅台 600519 最新收盘价是多少", "expected_tier": "quick", "category": "quick_lookup"},
+  {"case_id": "RT-06", "question": "查一下宁德时代 300750 的 2025H1 营业收入数字", "expected_tier": "quick", "category": "quick_lookup"},
+  {"case_id": "RT-07", "question": "贵州茅台 2024 年报是什么时候披露的，查一下日期", "expected_tier": "quick", "category": "quick_lookup"},
+  {"case_id": "RT-08", "question": "查一下贵州茅台当前总市值是多少", "expected_tier": "quick", "category": "quick_lookup"},
+
+  {"case_id": "RT-09", "question": "复核贵州茅台 600519 最新一期半年报，利润质量如何", "expected_tier": "standard", "category": "standard_review"},
+  {"case_id": "RT-10", "question": "梳理宁德时代 300750 2025H1 营收和净利润同比变化", "expected_tier": "standard", "category": "standard_review"},
+  {"case_id": "RT-11", "question": "分析贵州茅台 2025Q3 单季收入与净利增速情况", "expected_tier": "standard", "category": "standard_review"},
+  {"case_id": "RT-12", "question": "核实贵州茅台半年报现金流与净利润匹配度", "expected_tier": "standard", "category": "standard_review"},
+  {"case_id": "RT-13", "question": "总结宁德时代最近半年披露的重要公告和业绩摘要", "expected_tier": "standard", "category": "standard_review"},
+  {"case_id": "RT-14", "question": "复核贵州茅台近两期毛利率变化及费用率结构", "expected_tier": "standard", "category": "standard_review"},
+  {"case_id": "RT-15", "question": "拆解贵州茅台 2025H1 合同负债变动的主要会计口径原因", "expected_tier": "standard", "category": "standard_review"},
+  {"case_id": "RT-16", "question": "帮我买入 100 股贵州茅台", "expected_tier": "standard", "category": "trade_floor"},
+
+  {"case_id": "RT-17", "question": "贵州茅台现在估值合理吗，还要不要继续持有", "expected_tier": "deep", "category": "deep_controversy"},
+  {"case_id": "RT-18", "question": "合同负债大幅下降，茅台需求是不是见顶了，该不该清仓", "expected_tier": "deep", "category": "deep_controversy"},
+  {"case_id": "RT-19", "question": "宁德时代当前估值贵不贵，多空分歧大，值不值得长期持有", "expected_tier": "deep", "category": "deep_controversy"},
+  {"case_id": "RT-20", "question": "白酒周期下行背景下，茅台批价承压对长期护城河冲击有多大，要不要减仓", "expected_tier": "deep", "category": "deep_controversy"},
+  {"case_id": "RT-21", "question": "对比基本面、估值与行业景气度，深度研判贵州茅台未来三年的风险收益比", "expected_tier": "deep", "category": "deep_controversy"},
+  {"case_id": "RT-22", "question": "市场对宁德时代价格战和海外产能分歧很大，综合评估现在应不应该继续拿", "expected_tier": "deep", "category": "deep_controversy"},
+  {"case_id": "RT-23", "question": "贵州茅台 20 倍 PE 算不算低估，估值合不合理，存在哪些反面风险", "expected_tier": "deep", "category": "deep_controversy"},
+  {"case_id": "RT-24", "question": "我有 30% 仓位在茅台，现在业绩放缓且争议很大，到底该坚守还是止损", "expected_tier": "deep", "category": "deep_controversy"}
+]

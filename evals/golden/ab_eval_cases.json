@@ -1,0 +1,23 @@
+[
+  {
+    "case_id": "AB-01",
+    "symbol": "600519",
+    "as_of": "2025-08-20",
+    "question": "贵州茅台 600519 2025H1 合同负债下降 42%，估值是否合理，还要不要继续持有？",
+    "required_dimensions": ["profit_quality", "cashflow", "valuation", "channel_industry", "risk_counterpoint"]
+  },
+  {
+    "case_id": "AB-02",
+    "symbol": "300750",
+    "as_of": "2025-08-20",
+    "question": "宁德时代 300750 海外产能扩张与行业价格战并存，当前估值贵不贵、值不值得继续持有？",
+    "required_dimensions": ["profit_quality", "cashflow", "valuation", "channel_industry", "risk_counterpoint"]
+  },
+  {
+    "case_id": "AB-03",
+    "symbol": "600519",
+    "as_of": "2025-11-05",
+    "question": "贵州茅台 2025Q3 单季增速放缓且多空分歧大，长期护城河与估值安全边际如何综合评估？",
+    "required_dimensions": ["profit_quality", "cashflow", "valuation", "channel_industry", "risk_counterpoint"]
+  }
+]

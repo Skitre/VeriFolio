@@ -1,0 +1,46 @@
+# 模型轴配置（对应文档第 4 题：双轴路由）
+# 代码中只认抽象角色（classify / draft / reason），具体模型与提供商在此解耦配置
+
+roles:
+  classify:
+    provider: "deepseek"
+    model: "deepseek-chat"
+    fallback_model: "deepseek-chat"
+    description: "快速判别角色（意图识别 / 路由分类，Stage 7 可一键切换本地 Kev-0.8B）"
+
+  draft:
+    provider: "deepseek"
+    model: "deepseek-chat"
+    description: "结构化规划、快查生成、标准研究起草与常规深研专家"
+
+  reason:
+    provider: "deepseek"
+    model: "deepseek-reasoner"
+    description: "高复杂度推理：深研中的估值研究员、反证官与主席裁决"
+
+# 任务档位 → 节点/专家角色映射（调模型成本时只改这里，不动路由逻辑）
+tier_role_bindings:
+  quick:
+    intake_classifier: "classify"
+    route_classifier: "classify"
+    plan: "draft"
+    draft: "draft"
+
+  standard:
+    intake_classifier: "classify"
+    route_classifier: "classify"
+    plan: "draft"
+    draft: "draft"
+
+  deep:
+    intake_classifier: "classify"
+    route_classifier: "classify"
+    plan: "draft"
+    fundamental_expert: "draft"
+    industry_expert: "draft"
+    technical_expert: "draft"
+    event_expert: "draft"
+    risk_expert: "draft"
+    valuation_expert: "reason"
+    adversary_challenger: "reason"
+    chair_adjudicator: "reason"
